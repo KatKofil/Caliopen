@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import { Trans, withI18n } from '@lingui/react';
 import classnames from 'classnames';
+import anchorme from 'anchorme';
 import { withScrollTarget } from '../../../../modules/scroll';
 import { withPush } from '../../../../modules/routing';
 import { Button, Confirm, Icon, TextBlock } from '../../../../components';
@@ -57,16 +58,11 @@ class MailMessage extends Component {
 
   renderBody = () => {
     const { message, isLocked, encryptionStatus } = this.props;
+    const body = message.body_is_plain ? `<pre>${anchorme(message.body, { emails: false, attributes: [{ name: 'target', value: '_blank' }] })}</pre>` : message.body;
 
     if (!isLocked) {
-      if (!message.body_is_plain) {
-        return (
-          <TextBlock nowrap={false} className="s-mail-message__content" dangerouslySetInnerHTML={{ __html: message.body }} />
-        );
-      }
-
       return (
-        <TextBlock nowrap={false}><pre className="s-mail-message__content">{message.body}</pre></TextBlock>
+        <TextBlock nowrap={false} className="s-mail-message__content" dangerouslySetInnerHTML={{ __html: body }} />
       );
     }
 

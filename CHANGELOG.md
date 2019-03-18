@@ -7,13 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
-
+ 
 - End to end PGP encryption/decryption.
 - When user adds an external account, external identity is added to user's contact card
 - Test for imap worker, twitter worker and identities worker
 - Actions for instant messages (delete, reply …) and tag list where missing
 - PWA: add to home screen
 - PWA: basic offline capabilities
+- Clickable links in plain text mails.
 
 ### Fixed
 
